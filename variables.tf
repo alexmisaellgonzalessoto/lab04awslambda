@@ -8,6 +8,7 @@ variable "region_aws" {
 variable "perfil_aws" {
   description = "Nombre del perfil de AWS configurado fuera del repositorio."
   type        = string
+  default     = "lab04awslambda"
   nullable    = false
 
   validation {
