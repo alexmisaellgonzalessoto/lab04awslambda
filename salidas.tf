@@ -55,3 +55,15 @@ output "colas_imagenes" {
     errores_arn       = aws_sqs_queue.errores.arn
   }
 }
+
+output "conexiones_servicios" {
+  description = "Conexiones privadas a S3 y SQS y grupos de seguridad de las funciones."
+  value = {
+    s3_id               = aws_vpc_endpoint.s3.id
+    s3_lista_prefijos   = aws_vpc_endpoint.s3.prefix_list_id
+    sqs_id              = aws_vpc_endpoint.sqs.id
+    sqs_interfaces      = aws_vpc_endpoint.sqs.network_interface_ids
+    seguridad_sqs       = aws_security_group.conexion_sqs.id
+    seguridad_funciones = { for nombre, grupo in aws_security_group.funciones : nombre => grupo.id }
+  }
+}
