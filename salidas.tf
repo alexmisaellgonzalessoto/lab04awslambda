@@ -35,3 +35,13 @@ output "salidas_privadas" {
     }
   }
 }
+
+output "almacenamiento_imagenes" {
+  description = "Bucket privado y prefijos de las imágenes originales y procesadas."
+  value = {
+    bucket             = aws_s3_bucket.imagenes.id
+    arn                = aws_s3_bucket.imagenes.arn
+    prefijo_originales = local.prefijo_originales
+    prefijo_procesadas = local.prefijo_procesadas
+  }
+}
