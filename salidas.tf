@@ -45,3 +45,13 @@ output "almacenamiento_imagenes" {
     prefijo_procesadas = local.prefijo_procesadas
   }
 }
+
+output "colas_imagenes" {
+  description = "Cola de procesamiento de imágenes y cola de errores del entorno."
+  value = {
+    procesamiento_url = aws_sqs_queue.imagenes.id
+    procesamiento_arn = aws_sqs_queue.imagenes.arn
+    errores_url       = aws_sqs_queue.errores.id
+    errores_arn       = aws_sqs_queue.errores.arn
+  }
+}
