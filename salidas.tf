@@ -23,3 +23,15 @@ output "subredes" {
     }
   }
 }
+
+output "salidas_privadas" {
+  description = "Puertas NAT, direcciones públicas y tablas de rutas por zona."
+  value = {
+    for zona, conexion in local.conexiones_privadas : zona => {
+      nat_id         = aws_nat_gateway.salida[zona].id
+      ip_publica     = aws_eip.nat[zona].public_ip
+      tabla_rutas_id = aws_route_table.privada[zona].id
+      subred_privada = aws_subnet.red[conexion.privada].id
+    }
+  }
+}
