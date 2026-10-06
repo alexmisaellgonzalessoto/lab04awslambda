@@ -67,3 +67,13 @@ output "conexiones_servicios" {
     seguridad_funciones = { for nombre, grupo in aws_security_group.funciones : nombre => grupo.id }
   }
 }
+
+output "ejecucion_funciones" {
+  description = "Roles de ejecución y grupos de registros de las funciones Lambda."
+  value = {
+    for nombre, rol in aws_iam_role.funciones : nombre => {
+      rol_arn         = rol.arn
+      grupo_registros = aws_cloudwatch_log_group.funciones[nombre].name
+    }
+  }
+}
