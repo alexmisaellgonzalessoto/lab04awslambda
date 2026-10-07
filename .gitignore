@@ -15,3 +15,4 @@ override.tf.json
 .env
 .env.*
 node_modules/
+paquetes/
