@@ -140,15 +140,12 @@ Conservar el estado local hasta completar la eliminación. Las capturas del desp
 
 Cada integrante debe realizar una contribución propia en una rama, crear su commit y abrir una solicitud de cambios con su cuenta de GitHub. Revisar e integrar cada propuesta y conservar su enlace como evidencia. No cambiar el autor de los commits para atribuir trabajo a otra persona.
 
-Reparto sugerido para cinco integrantes:
+Contribuciones integradas:
 
-| Integrante | Contribución concreta |
+| Cuenta de GitHub | Contribución |
 | --- | --- |
-| Responsable de documentación | Instrucciones de despliegue, pruebas y eliminación |
-| Responsable de API | Comprobador reproducible de JSON inválido, formato no admitido, límite de tamaño y CORS |
-| Responsable de procesamiento | Comprobador reproducible de recortes, duplicados y fallos parciales |
-| Responsable de red | Comprobador de subredes, rutas y puntos de conexión de cada entorno |
-| Responsable de cierre | Comprobador de recursos restantes después de la eliminación |
+| alexmisaellgonzalessoto | Infraestructura, funciones, despliegues, documentación y revisión de solicitudes |
+| AnthonyTisnadoGuevara | Comprobador de respuestas de la API, integrado mediante la solicitud de cambios [#2](https://github.com/alexmisaellgonzalessoto/lab04awslambda/pull/2) |
 
 Quien no tenga permiso de escritura puede crear una bifurcación del repositorio, trabajar en su rama y abrir una solicitud hacia `main` del repositorio original. Las propuestas deben aportar código o documentación verificables y explicar cómo se comprobaron.
 
@@ -163,6 +160,8 @@ git push -u origin pruebas/validacion-api
 El ejemplo supone que el integrante ya escribió y validó ese archivo en su copia o bifurcación. En GitHub, crear la solicitud comparando su rama con `main` del repositorio original. No desplegar recursos adicionales para una contribución que solamente necesita comprobar código.
 
 ## Costos y eliminación
+
+El laboratorio se eliminó el 7 de octubre de 2026. `terraform destroy` finalizó correctamente en DEV, QA y PROD con 64 recursos destruidos en cada entorno. Los tres estados quedaron vacíos. Las comprobaciones posteriores en AWS confirmaron que no quedaban recursos del laboratorio, incluidas las puertas NAT, direcciones IPv4 públicas y puntos de conexión. Los enlaces de las API de las pruebas ya no están disponibles.
 
 Las puertas NAT, las direcciones IPv4 públicas y los puntos de conexión de interfaz generan cargos mientras permanecen asignados. También pueden cobrarse almacenamiento, solicitudes y ejecuciones. La expiración de S3 a 30 o 90 días no elimina inmediatamente el laboratorio.
 
